@@ -157,7 +157,7 @@ def estimate_doublet_scores(
     prior = 0.08
     denom = sim_frac + (1.0 - sim_frac) * (sim_ratio / max(prior, 1e-6)) * (1.0 - prior)
     scores = np.divide(sim_frac, np.maximum(denom, 1e-12))
-    return np.clip(scores, 0.0, 1.0)
+    return np.asarray(np.clip(scores, 0.0, 1.0), dtype=np.float64)
 
 
 def filter_and_normalize(

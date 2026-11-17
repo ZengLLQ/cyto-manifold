@@ -228,7 +228,7 @@ def compute_local_moran(
     row_sums = np.maximum(np.sum(weights, axis=1, keepdims=True), 1e-12)
     w_row = weights / row_sums
     lag_z = w_row @ z
-    return (z / m2) * lag_z
+    return np.asarray((z / m2) * lag_z, dtype=np.float64)
 
 
 def detect_spatially_variable_genes(
